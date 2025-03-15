@@ -6,7 +6,7 @@
 /*   By: anakin <anakin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:26:26 by anakin            #+#    #+#             */
-/*   Updated: 2025/03/07 09:44:46 by anakin           ###   ########.fr       */
+/*   Updated: 2025/03/14 23:46:28 by anakin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void PhoneBook::display_phonebook(void) const
     
     for (int i = 0; i < this->size; i++)
     {
-            std::cout << "|" << std::setw(9) << i << "|";
+            std::cout << "|" << std::setw(10) << i << "|";
             print_name(this->contacts[i].get_firstname());
             std::cout << "|";
             print_name(this->contacts[i].get_lastname());

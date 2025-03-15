@@ -6,7 +6,7 @@
 /*   By: anakin <anakin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 22:06:33 by anakin            #+#    #+#             */
-/*   Updated: 2025/03/07 09:55:47 by anakin           ###   ########.fr       */
+/*   Updated: 2025/03/15 15:00:30 by anakin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static bool is_valid_number(const std::string& number)
     return true;
 }
 
-static bool add_contact(std::string data[5])
+static bool makeData(std::string data[5])
 {
     std::cout << "Enter Contact Information" << std::endl;
     
@@ -74,7 +74,7 @@ static bool add_contact(std::string data[5])
     return true;
 }
 
-static bool search_contact(PhoneBook& phoneBook)
+static bool search(PhoneBook& phoneBook)
 {
     if (phoneBook.get_size() == 0)
     {
@@ -85,7 +85,6 @@ static bool search_contact(PhoneBook& phoneBook)
     std::cout << "\nInsert Index: ";
     int index;
     std::cin >> index;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     if (std::cin.fail() || index < 0 || index >= phoneBook.get_size())
     {
         std::cout << "Invalid Index!\n" << std::endl;
@@ -93,6 +92,7 @@ static bool search_contact(PhoneBook& phoneBook)
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         return (false);
     }
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     phoneBook.display_contact(index);
     return (true);
 }
@@ -113,14 +113,14 @@ int main()
         }  
         if (input == "ADD")
         {
-            if (add_contact(data))
+            if (makeData(data))
             {
                 phoneBook.add_contact(data);
                 std::cout << "Contact Added Successfully!\n" << std::endl;
             }
         }
         else if (input == "SEARCH")
-            search_contact(phoneBook);
+            search(phoneBook);
         else if (input == "EXIT")
             break;
         else
